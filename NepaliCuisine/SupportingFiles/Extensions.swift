@@ -78,10 +78,11 @@ extension UIColor {
 
 
 struct Title: ViewModifier {
-    
+    var fontSize: CGFloat
     func body(content: Content) -> some View {
         content
-            .font(Font.custom("YanoneKaffeesatz-Medium", size: 30))
+            .font(Font.custom("YanoneKaffeesatz-Medium", size: fontSize))
+
     }
 }
 
@@ -101,8 +102,8 @@ struct Subheading: ViewModifier {
 
 
 extension Text {
-    func titled() -> some View {
-        self.modifier(Title())
+    func titled(fontSize: CGFloat = 30) -> some View {
+        self.modifier(Title(fontSize: fontSize))
     }
     
     func headline() -> some View {

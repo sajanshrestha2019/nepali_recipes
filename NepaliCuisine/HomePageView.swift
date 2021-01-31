@@ -26,6 +26,7 @@ struct HomePageView: View {
                         .foregroundColor(RecipeApp.primaryColor)
                     CategoryScrollView(recipeModel: recipeModel)
                         .padding(.vertical)
+                    
                     RecipeVerticalScrollView(recipes: recipeModel.recipes)
                 }
                 .padding()
@@ -88,26 +89,45 @@ struct CategoryView: View {
 
 
 struct RecipeVerticalScrollView: View {
-    
-    let columns = [GridItem(.flexible(minimum: 120)), GridItem(.flexible(minimum: 120))]
-    
+        
     var recipes: [Recipe]
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            
-            LazyVGrid(columns: columns, spacing: 30, content: {
-                ForEach(recipes) { recipe in
-                    NavigationLink(
-                        destination: RecipeDetailView(for: recipe),
-                        label: {
-                            RecipeCardView(recipe: recipe)
-                                .frame(height: 140)
-                        })
-                }
-            })
+            VStack(spacing: verticalSpacing) {
+                HorizontalScrollView(recipes: recipes)
+                HorizontalScrollView(recipes: recipes)
+                HorizontalScrollView(recipes: recipes)
+            }
         }
     }
+    
+    // MARK: - Constants
+    private let verticalSpacing: CGFloat = 25
+}
+
+struct HorizontalScrollView: View {
+    var recipes: [Recipe]
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            VStack(alignment: .leading) {
+                Text("All")
+                    .titled(fontSize: 20)
+                HStack(spacing: spacing) {
+                    ForEach(recipes) { recipe in
+                        VStack(alignment: .leading) {
+                            RecipeCardView(recipe: recipe)
+                                .frame(width: 150, height: 100)
+                            Text(recipe.name)
+                                .font(.subheadline)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // MARK: - Constants
+    private let spacing: CGFloat = 10
 }
 
 struct RecipeCardView: View {
@@ -121,22 +141,17 @@ struct RecipeCardView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .foregroundColor(Color(UIColor(hex: recipe.color) ?? UIColor.systemPink))
-                VStack { 
-
-                    NetworkImage(url: recipe.imageUrl)
-                        .frame(width: minimum * 0.7, height: minimum * 0.9)
-
-                    Text(recipe.name)
-                        .subheadline()
-                        .foregroundColor(.black)
-                        .offset(y: -10)
-                }
+                
+                NetworkImage(url: recipe.imageUrl)
+                    .frame(width: minimum * 0.7, height: minimum * 0.9)
             }
+            .shadow(radius: shadowRadius)
         }
     }
     
     // MARK:- RecipeCardView Constants
-    private let cornerRadius: CGFloat = 25
+    private let cornerRadius: CGFloat = 8
+    private let shadowRadius: CGFloat = 4
 }
 
 

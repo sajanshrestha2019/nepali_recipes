@@ -30,6 +30,7 @@ struct RecipePlayerView: View {
                         .padding()
                     if recipePlayer.currentMediaType == .photo {
                         NetworkImage(url: recipePlayer.currentMediaUrl)
+                            .cornerRadius(8)
                     }
                     else if recipePlayer.currentMediaType == .video {
                         VideoPlayerView(url: recipePlayer.currentMediaUrl)
