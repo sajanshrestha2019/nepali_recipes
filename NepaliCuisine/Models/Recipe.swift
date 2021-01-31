@@ -20,6 +20,7 @@ struct Recipe: Codable, Identifiable {
     let serveSize: Int
     let level: String
     let type: [String]
+    var subType: String?
     
     var indgredientsDescription: String {
         ingredients.joined(separator: ", ")

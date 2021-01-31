@@ -91,13 +91,15 @@ struct CategoryView: View {
 struct RecipeVerticalScrollView: View {
         
     var recipes: [Recipe]
+    var popularRecipes: [Recipe] { [recipes.first!] }
+    var newRecipes: [Recipe] { [recipes.first!] }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
-                HorizontalScrollView(recipes: recipes)
-                HorizontalScrollView(recipes: recipes)
-                HorizontalScrollView(recipes: recipes)
+                HorizontalScrollView(title: "All", recipes: recipes)
+                HorizontalScrollView(title: "Popular", recipes: popularRecipes)
+                HorizontalScrollView(title: "New Recipes", recipes: newRecipes)
             }
         }
     }
@@ -107,11 +109,12 @@ struct RecipeVerticalScrollView: View {
 }
 
 struct HorizontalScrollView: View {
+    var title: String
     var recipes: [Recipe]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             VStack(alignment: .leading) {
-                Text("All")
+                Text(title)
                     .titled(fontSize: 20)
                 HStack(spacing: spacing) {
                     ForEach(recipes) { recipe in
