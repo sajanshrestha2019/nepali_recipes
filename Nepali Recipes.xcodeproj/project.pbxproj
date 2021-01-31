@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		A10B28A0257D810F009D5FFC /* RecipeFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10B289F257D810F009D5FFC /* RecipeFileManager.swift */; };
 		A12FDE1B25793B4900DE28F0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12FDE1A25793B4900DE28F0 /* Recipe.swift */; };
+		A13DAFF6259FBAB9002817D1 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAFF5259FBAB9002817D1 /* VideoPlayerView.swift */; };
+		A13DB006259FBC7A002817D1 /* RecipePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DB005259FBC7A002817D1 /* RecipePlayer.swift */; };
+		A13EA8C9259BE21B00686C08 /* CloseIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13EA8C8259BE21B00686C08 /* CloseIcon.swift */; };
+		A1660B7D25C730DE00F6BCE5 /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1660B7C25C730DE00F6BCE5 /* NetworkImage.swift */; };
+		A1784D5825815F8E00046208 /* RecipePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1784D5725815F8E00046208 /* RecipePlayerView.swift */; };
+		A1784D602581737100046208 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1784D5F2581737100046208 /* IconButton.swift */; };
+		A1784D652581A4C800046208 /* InstructionMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1784D642581A4C800046208 /* InstructionMediaView.swift */; };
+		A180128925B5EFB00058F146 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180128825B5EFB00058F146 /* Spinner.swift */; };
 		A19F5B12257ABEF3007BD675 /* RecipeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F5B11257ABEF3007BD675 /* RecipeCategory.swift */; };
 		A19F5B1A257ABF96007BD675 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F5B19257ABF96007BD675 /* RecipeDetailView.swift */; };
 		A19F5B25257AF132007BD675 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F5B24257AF132007BD675 /* Extensions.swift */; };
@@ -17,11 +25,10 @@
 		A19F5B42257BE674007BD675 /* CourierPrime-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A19F5B41257BE674007BD675 /* CourierPrime-Regular.ttf */; };
 		A19F5B47257BEA58007BD675 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A19F5B46257BEA58007BD675 /* Raleway-Regular.ttf */; };
 		A19F5B4C257BEC7D007BD675 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F5B4B257BEC7D007BD675 /* Constants.swift */; };
-		A1A67C17257DC4FF00064E93 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A67C16257DC4FF00064E93 /* Spinner.swift */; };
 		A1CDD1E0257AB5BE00F9C56B /* RecipeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CDD1DF257AB5BE00F9C56B /* RecipeDownloader.swift */; };
-		A1D78001257C82150025DE59 /* ImageDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D78000257C82150025DE59 /* ImageDataDownloader.swift */; };
+		A1D78001257C82150025DE59 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D78000257C82150025DE59 /* ImageDownloader.swift */; };
 		A1E23058257997AA008E8CFF /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E23057257997AA008E8CFF /* RecipeModel.swift */; };
-		A1F4B64D25757D4B00744700 /* NepaliCuisineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F4B64C25757D4B00744700 /* NepaliCuisineApp.swift */; };
+		A1F4B64D25757D4B00744700 /* NepaliRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F4B64C25757D4B00744700 /* NepaliRecipesApp.swift */; };
 		A1F4B64F25757D4B00744700 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F4B64E25757D4B00744700 /* HomePageView.swift */; };
 		A1F4B65125757D4D00744700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F4B65025757D4D00744700 /* Assets.xcassets */; };
 		A1F4B65425757D4D00744700 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F4B65325757D4D00744700 /* Preview Assets.xcassets */; };
@@ -49,6 +56,14 @@
 /* Begin PBXFileReference section */
 		A10B289F257D810F009D5FFC /* RecipeFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFileManager.swift; sourceTree = "<group>"; };
 		A12FDE1A25793B4900DE28F0 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		A13DAFF5259FBAB9002817D1 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		A13DB005259FBC7A002817D1 /* RecipePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePlayer.swift; sourceTree = "<group>"; };
+		A13EA8C8259BE21B00686C08 /* CloseIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseIcon.swift; sourceTree = "<group>"; };
+		A1660B7C25C730DE00F6BCE5 /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
+		A1784D5725815F8E00046208 /* RecipePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePlayerView.swift; sourceTree = "<group>"; };
+		A1784D5F2581737100046208 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		A1784D642581A4C800046208 /* InstructionMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionMediaView.swift; sourceTree = "<group>"; };
+		A180128825B5EFB00058F146 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		A19F5B11257ABEF3007BD675 /* RecipeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategory.swift; sourceTree = "<group>"; };
 		A19F5B19257ABF96007BD675 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		A19F5B24257AF132007BD675 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -57,20 +72,19 @@
 		A19F5B41257BE674007BD675 /* CourierPrime-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CourierPrime-Regular.ttf"; sourceTree = "<group>"; };
 		A19F5B46257BEA58007BD675 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		A19F5B4B257BEC7D007BD675 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A1A67C16257DC4FF00064E93 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		A1CDD1DF257AB5BE00F9C56B /* RecipeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDownloader.swift; sourceTree = "<group>"; };
-		A1D78000257C82150025DE59 /* ImageDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataDownloader.swift; sourceTree = "<group>"; };
+		A1D78000257C82150025DE59 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		A1E23057257997AA008E8CFF /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
-		A1F4B64925757D4B00744700 /* NepaliCuisine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NepaliCuisine.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1F4B64C25757D4B00744700 /* NepaliCuisineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NepaliCuisineApp.swift; sourceTree = "<group>"; };
+		A1F4B64925757D4B00744700 /* Nepali Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nepali Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F4B64C25757D4B00744700 /* NepaliRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NepaliRecipesApp.swift; sourceTree = "<group>"; };
 		A1F4B64E25757D4B00744700 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		A1F4B65025757D4D00744700 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1F4B65325757D4D00744700 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A1F4B65525757D4D00744700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1F4B65A25757D4D00744700 /* NepaliCuisineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NepaliCuisineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F4B65A25757D4D00744700 /* Nepali RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nepali RecipesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F4B65E25757D4D00744700 /* NepaliCuisineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NepaliCuisineTests.swift; sourceTree = "<group>"; };
 		A1F4B66025757D4D00744700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1F4B66525757D4D00744700 /* NepaliCuisineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NepaliCuisineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1F4B66525757D4D00744700 /* Nepali RecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nepali RecipesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F4B66925757D4D00744700 /* NepaliCuisineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NepaliCuisineUITests.swift; sourceTree = "<group>"; };
 		A1F4B66B25757D4D00744700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,8 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				A12FDE1A25793B4900DE28F0 /* Recipe.swift */,
-				A1E23057257997AA008E8CFF /* RecipeModel.swift */,
 				A19F5B11257ABEF3007BD675 /* RecipeCategory.swift */,
+				A1E23057257997AA008E8CFF /* RecipeModel.swift */,
+				A13DB005259FBC7A002817D1 /* RecipePlayer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -124,7 +139,10 @@
 		A1A67C1B257DD75200064E93 /* Supporting Views */ = {
 			isa = PBXGroup;
 			children = (
-				A1A67C16257DC4FF00064E93 /* Spinner.swift */,
+				A1660B7C25C730DE00F6BCE5 /* NetworkImage.swift */,
+				A180128825B5EFB00058F146 /* Spinner.swift */,
+				A1784D5F2581737100046208 /* IconButton.swift */,
+				A13EA8C8259BE21B00686C08 /* CloseIcon.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -133,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A1CDD1DF257AB5BE00F9C56B /* RecipeDownloader.swift */,
-				A1D78000257C82150025DE59 /* ImageDataDownloader.swift */,
+				A1D78000257C82150025DE59 /* ImageDownloader.swift */,
 				A10B289F257D810F009D5FFC /* RecipeFileManager.swift */,
 			);
 			path = Service;
@@ -161,9 +179,9 @@
 		A1F4B64A25757D4B00744700 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1F4B64925757D4B00744700 /* NepaliCuisine.app */,
-				A1F4B65A25757D4D00744700 /* NepaliCuisineTests.xctest */,
-				A1F4B66525757D4D00744700 /* NepaliCuisineUITests.xctest */,
+				A1F4B64925757D4B00744700 /* Nepali Recipes.app */,
+				A1F4B65A25757D4D00744700 /* Nepali RecipesTests.xctest */,
+				A1F4B66525757D4D00744700 /* Nepali RecipesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,9 +189,12 @@
 		A1F4B64B25757D4B00744700 /* NepaliCuisine */ = {
 			isa = PBXGroup;
 			children = (
-				A1F4B64C25757D4B00744700 /* NepaliCuisineApp.swift */,
+				A1F4B64C25757D4B00744700 /* NepaliRecipesApp.swift */,
 				A1F4B64E25757D4B00744700 /* HomePageView.swift */,
 				A19F5B19257ABF96007BD675 /* RecipeDetailView.swift */,
+				A1784D5725815F8E00046208 /* RecipePlayerView.swift */,
+				A1784D642581A4C800046208 /* InstructionMediaView.swift */,
+				A13DAFF5259FBAB9002817D1 /* VideoPlayerView.swift */,
 				A1A67C1B257DD75200064E93 /* Supporting Views */,
 				A18C557D25797E6C00413D84 /* Models */,
 				A1CDD1DE257AB5A600F9C56B /* Service */,
@@ -215,9 +236,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1F4B64825757D4B00744700 /* NepaliCuisine */ = {
+		A1F4B64825757D4B00744700 /* Nepali Recipes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F4B66E25757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisine" */;
+			buildConfigurationList = A1F4B66E25757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali Recipes" */;
 			buildPhases = (
 				A1F4B64525757D4B00744700 /* Sources */,
 				A1F4B64625757D4B00744700 /* Frameworks */,
@@ -227,14 +248,14 @@
 			);
 			dependencies = (
 			);
-			name = NepaliCuisine;
+			name = "Nepali Recipes";
 			productName = NepaliCuisine;
-			productReference = A1F4B64925757D4B00744700 /* NepaliCuisine.app */;
+			productReference = A1F4B64925757D4B00744700 /* Nepali Recipes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1F4B65925757D4D00744700 /* NepaliCuisineTests */ = {
+		A1F4B65925757D4D00744700 /* Nepali RecipesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F4B67125757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisineTests" */;
+			buildConfigurationList = A1F4B67125757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali RecipesTests" */;
 			buildPhases = (
 				A1F4B65625757D4D00744700 /* Sources */,
 				A1F4B65725757D4D00744700 /* Frameworks */,
@@ -245,14 +266,14 @@
 			dependencies = (
 				A1F4B65C25757D4D00744700 /* PBXTargetDependency */,
 			);
-			name = NepaliCuisineTests;
+			name = "Nepali RecipesTests";
 			productName = NepaliCuisineTests;
-			productReference = A1F4B65A25757D4D00744700 /* NepaliCuisineTests.xctest */;
+			productReference = A1F4B65A25757D4D00744700 /* Nepali RecipesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A1F4B66425757D4D00744700 /* NepaliCuisineUITests */ = {
+		A1F4B66425757D4D00744700 /* Nepali RecipesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1F4B67425757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisineUITests" */;
+			buildConfigurationList = A1F4B67425757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali RecipesUITests" */;
 			buildPhases = (
 				A1F4B66125757D4D00744700 /* Sources */,
 				A1F4B66225757D4D00744700 /* Frameworks */,
@@ -263,9 +284,9 @@
 			dependencies = (
 				A1F4B66725757D4D00744700 /* PBXTargetDependency */,
 			);
-			name = NepaliCuisineUITests;
+			name = "Nepali RecipesUITests";
 			productName = NepaliCuisineUITests;
-			productReference = A1F4B66525757D4D00744700 /* NepaliCuisineUITests.xctest */;
+			productReference = A1F4B66525757D4D00744700 /* Nepali RecipesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -290,7 +311,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A1F4B64425757D4A00744700 /* Build configuration list for PBXProject "NepaliCuisine" */;
+			buildConfigurationList = A1F4B64425757D4A00744700 /* Build configuration list for PBXProject "Nepali Recipes" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -303,9 +324,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1F4B64825757D4B00744700 /* NepaliCuisine */,
-				A1F4B65925757D4D00744700 /* NepaliCuisineTests */,
-				A1F4B66425757D4D00744700 /* NepaliCuisineUITests */,
+				A1F4B64825757D4B00744700 /* Nepali Recipes */,
+				A1F4B65925757D4D00744700 /* Nepali RecipesTests */,
+				A1F4B66425757D4D00744700 /* Nepali RecipesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,17 +366,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1784D652581A4C800046208 /* InstructionMediaView.swift in Sources */,
 				A1CDD1E0257AB5BE00F9C56B /* RecipeDownloader.swift in Sources */,
 				A19F5B25257AF132007BD675 /* Extensions.swift in Sources */,
+				A13DAFF6259FBAB9002817D1 /* VideoPlayerView.swift in Sources */,
+				A1784D602581737100046208 /* IconButton.swift in Sources */,
 				A19F5B12257ABEF3007BD675 /* RecipeCategory.swift in Sources */,
+				A1660B7D25C730DE00F6BCE5 /* NetworkImage.swift in Sources */,
 				A12FDE1B25793B4900DE28F0 /* Recipe.swift in Sources */,
+				A180128925B5EFB00058F146 /* Spinner.swift in Sources */,
 				A1E23058257997AA008E8CFF /* RecipeModel.swift in Sources */,
 				A1F4B64F25757D4B00744700 /* HomePageView.swift in Sources */,
-				A1F4B64D25757D4B00744700 /* NepaliCuisineApp.swift in Sources */,
-				A1A67C17257DC4FF00064E93 /* Spinner.swift in Sources */,
+				A1F4B64D25757D4B00744700 /* NepaliRecipesApp.swift in Sources */,
+				A13EA8C9259BE21B00686C08 /* CloseIcon.swift in Sources */,
 				A19F5B1A257ABF96007BD675 /* RecipeDetailView.swift in Sources */,
 				A19F5B4C257BEC7D007BD675 /* Constants.swift in Sources */,
-				A1D78001257C82150025DE59 /* ImageDataDownloader.swift in Sources */,
+				A13DB006259FBC7A002817D1 /* RecipePlayer.swift in Sources */,
+				A1D78001257C82150025DE59 /* ImageDownloader.swift in Sources */,
+				A1784D5825815F8E00046208 /* RecipePlayerView.swift in Sources */,
 				A10B28A0257D810F009D5FFC /* RecipeFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,12 +409,12 @@
 /* Begin PBXTargetDependency section */
 		A1F4B65C25757D4D00744700 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1F4B64825757D4B00744700 /* NepaliCuisine */;
+			target = A1F4B64825757D4B00744700 /* Nepali Recipes */;
 			targetProxy = A1F4B65B25757D4D00744700 /* PBXContainerItemProxy */;
 		};
 		A1F4B66725757D4D00744700 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1F4B64825757D4B00744700 /* NepaliCuisine */;
+			target = A1F4B64825757D4B00744700 /* Nepali Recipes */;
 			targetProxy = A1F4B66625757D4D00744700 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -443,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -498,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -523,7 +551,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sajan.NepaliCuisine;
+				PRODUCT_BUNDLE_IDENTIFIER = sajan.NepaliRecipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,7 +573,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sajan.NepaliCuisine;
+				PRODUCT_BUNDLE_IDENTIFIER = sajan.NepaliRecipes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -570,7 +598,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NepaliCuisine.app/NepaliCuisine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nepali Recipes.app/Nepali Recipes";
 			};
 			name = Debug;
 		};
@@ -592,7 +620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NepaliCuisine.app/NepaliCuisine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nepali Recipes.app/Nepali Recipes";
 			};
 			name = Release;
 		};
@@ -639,7 +667,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1F4B64425757D4A00744700 /* Build configuration list for PBXProject "NepaliCuisine" */ = {
+		A1F4B64425757D4A00744700 /* Build configuration list for PBXProject "Nepali Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F4B66C25757D4D00744700 /* Debug */,
@@ -648,7 +676,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F4B66E25757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisine" */ = {
+		A1F4B66E25757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F4B66F25757D4D00744700 /* Debug */,
@@ -657,7 +685,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F4B67125757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisineTests" */ = {
+		A1F4B67125757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali RecipesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F4B67225757D4D00744700 /* Debug */,
@@ -666,7 +694,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1F4B67425757D4D00744700 /* Build configuration list for PBXNativeTarget "NepaliCuisineUITests" */ = {
+		A1F4B67425757D4D00744700 /* Build configuration list for PBXNativeTarget "Nepali RecipesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1F4B67525757D4D00744700 /* Debug */,

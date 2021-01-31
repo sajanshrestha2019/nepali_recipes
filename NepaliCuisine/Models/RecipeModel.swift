@@ -12,18 +12,18 @@ class RecipeModel: ObservableObject {
     
     @Published var recipes = [Recipe]() {
         didSet {
-            if fetchedRecipesSaved == false {
+            if !fetchedRecipesSaved {
                 saveFetchedRecipes()
             }
             fetchedRecipesSaved = true
-            recipeLoading = false
+            self.recipeLoading = false
         }
     }
     
     @Published var categories = [RecipeCategory]() {
         didSet {
-            fetchRecipes(for: categories.first)
             selectedCategory = categories.first
+            fetchRecipes(for: selectedCategory)
         }
     }
     

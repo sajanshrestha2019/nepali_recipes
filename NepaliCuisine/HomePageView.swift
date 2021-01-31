@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HomePageView: View {
     
-    @ObservedObject var recipeModel = RecipeModel()
+    @ObservedObject var recipeModel: RecipeModel
         
     var body: some View {
         if recipeModel.recipeLoading {
             Spinner()
+                .frame(width: 100, height: 100)
         }
         else {
             NavigationView {
@@ -47,7 +48,7 @@ struct HomePageView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomePageView()
+            HomePageView(recipeModel: RecipeModel())
         }
     }
 }
@@ -69,7 +70,6 @@ struct CategoryScrollView: View {
         }
     }
 }
-
 
 struct CategoryView: View {
     var category: RecipeCategory
@@ -122,14 +122,14 @@ struct RecipeCardView: View {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .foregroundColor(Color(UIColor(hex: recipe.color) ?? UIColor.systemPink))
                 VStack { 
-                    Image(uiImage: UIImage(data: recipe.imageData ?? Data())!)
-                        .resizable()
-                        .frame(width: minimum * 0.7, height: minimum * 0.7)
-                        .aspectRatio(contentMode: .fit)
-                    
+
+                    NetworkImage(url: recipe.imageUrl)
+                        .frame(width: minimum * 0.7, height: minimum * 0.9)
+
                     Text(recipe.name)
                         .subheadline()
                         .foregroundColor(.black)
+                        .offset(y: -10)
                 }
             }
         }

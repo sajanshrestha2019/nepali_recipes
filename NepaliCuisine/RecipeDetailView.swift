@@ -13,6 +13,9 @@ struct RecipeDetailView: View {
     var recipe: Recipe
     
     @State private var copyStatus: RecipeCopyStatus = .none
+    @State private var mediaUrl = ""
+    @State private var mediaType = MediaType.none
+    @State private var presentedSheet: PresentedSheet? = nil
     
     init(for recipe: Recipe) {
         self.recipe = recipe
@@ -23,15 +26,25 @@ struct RecipeDetailView: View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
                 
-                Image(uiImage: UIImage(data: recipe.imageData ?? Data())!)
-                    .resizable()
-                    .frame(width: 230, height: 290)
-                    .aspectRatio(contentMode: .fill)
-                    .shadow(radius: imageShadow)
+                ZStack {
+                    Color(#colorLiteral(red: 0.297303915, green: 0.2494146526, blue: 0.2370918989, alpha: 1))
+                    Image(uiImage: UIImage(data: recipe.imageData ?? Data())!)
+                        .resizable()
+                        .frame(width: 240, height: 320)
+                        .aspectRatio(contentMode: .fit)
+                        .clipShape(Circle())
+                        .shadow(radius: imageShadow)
+                }
                 
                 VStack(alignment: .leading, spacing: verticalSpacing) {
-                    Text(recipe.name)
-                        .titled()
+                    HStack {
+                        Text(recipe.name)
+                            .titled()
+                        Spacer()
+                        IconButton(title: "Start", icon: "livephoto.play", color: RecipeApp.primaryColor) {
+                            presentedSheet = .recipePlayerView
+                        }
+                    }
                     
                     HStack {
                         InfoCard(iconName: "stopwatch", title: "\(recipe.duration) mins", color: Color(#colorLiteral(red: 0.9624301791, green: 0.7577118278, blue: 0.6909566522, alpha: 1)))
@@ -62,9 +75,29 @@ struct RecipeDetailView: View {
                         CopyButton(action: copyStepsToClipBoard, copied: copyStatus == .stepsCopied)
                     }
                     
-                    InstructionsList(for: recipe.instructions)
+                    InstructionsList(for: recipe.instructions) { mediaType, url in
+                        self.mediaType = mediaType
+                        self.mediaUrl = url
+                        presentedSheet = .instructionMediaView
+                    }
                     
                 }.padding()
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
+        .sheet(item: $presentedSheet) { item in
+            sheet(for: item)
+        }
+        
+    }
+    
+    private func sheet(for item: PresentedSheet) -> some View {
+        Group {
+            switch item {
+            case .recipePlayerView:
+                RecipePlayerView(recipePlayer: RecipePlayer(recipe: recipe))
+            case .instructionMediaView:
+                InstructionMediaView(url: $mediaUrl, mediaType: $mediaType)
             }
         }
     }
@@ -123,6 +156,7 @@ struct IngredientsList: View {
                         .foregroundColor(RecipeApp.primaryColor)
                     Text(ingredients[index])
                         .subheadline()
+                        
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
             }
@@ -133,9 +167,11 @@ struct IngredientsList: View {
 struct InstructionsList: View {
     
     var instructions: [Instruction]
+    var instructionMediaButtonTapped: ((MediaType, String) -> Void)
     
-    init(for instructions: [Instruction]) {
+    init(for instructions: [Instruction], instructionMediaButtonTapped: @escaping (MediaType, String) -> Void) {
         self.instructions = instructions
+        self.instructionMediaButtonTapped = instructionMediaButtonTapped
     }
     
     var body: some View {
@@ -154,9 +190,14 @@ struct InstructionsList: View {
                     .resizable()
                     .frame(width: 35, height: 35)
                     .foregroundColor(RecipeApp.primaryColor)
-                Divider()
-                    .padding(.vertical)
-                Button(action: {}, label: {
+                if instruction.mediaType != .none {
+                    Divider()
+                        .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+                        
+                }
+                Button(action: {
+                    instructionMediaButtonTapped(instruction.mediaType, instruction.mediaType == .video ? instruction.videoUrl! : instruction.imageUrl!)
+                }, label: {
                     let media = instruction.mediaType
                     if media == .photo || media == .video {
                         Image(systemName: media.rawValue)
@@ -168,7 +209,7 @@ struct InstructionsList: View {
             Text(instruction.text)
                 .subheadline()
                 .fixedSize(horizontal: false, vertical: true)
-                .offset(x: 10.0, y: 0.0)
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                     
         }
         .padding(.bottom)
@@ -194,7 +235,7 @@ struct InfoCard: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geometry.size.width/2, height: geometry.size.width/2)
                     Text(title)
-                        .subheadline()
+                        .font(Font.custom("Raleway-Regular", size: geometry.size.width * 0.15))
                 }
             }
         }
@@ -227,6 +268,12 @@ struct CopyButton: View {
     }
 }
 
-
-
-
+enum PresentedSheet: Int, Identifiable {
+    
+    var id: Int {
+        self.rawValue
+    }
+    
+    case recipePlayerView
+    case instructionMediaView
+}

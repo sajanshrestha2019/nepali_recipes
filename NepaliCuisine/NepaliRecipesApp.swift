@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct NepaliCuisineApp: App {
+struct NepaliRecipesApp: App {
     var body: some Scene {
         WindowGroup {
-            HomePageView()
+            HomePageView(recipeModel: RecipeModel())
         }
     }
 }

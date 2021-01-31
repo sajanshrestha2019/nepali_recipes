@@ -28,7 +28,7 @@ struct RecipeDownloader {
                         anotherRecipe.imageData = imageData
                     }
                     catch {
-                        
+                        print("error")
                     }
                     return anotherRecipe
                 }
@@ -59,10 +59,10 @@ enum EndPoint {
     var url: URL? {
         switch self {
         case .recipes(let id):
-            //return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/\(id)/recipes")
+            // return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/\(id)/recipes")
             return URL(string: "http://localhost:3000/api/\(id)/recipes")
         case .categories:
-            //return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/categories")
+            // return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/categories")
             return URL(string: "http://localhost:3000/api/categories")
         }
     }
