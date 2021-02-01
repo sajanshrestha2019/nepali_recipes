@@ -10,8 +10,8 @@ import Combine
 
 struct RecipeDownloader {
     
-    static func getRecipes(category: RecipeCategory) -> AnyPublisher<[Recipe], Error> {
-        let url = EndPoint.recipes(categoryId: category.id).url!
+    static func getRecipes() -> AnyPublisher<[Recipe], Error> {
+        let url = EndPoint.recipes.url!
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
@@ -53,14 +53,14 @@ struct RecipeDownloader {
 }
 
 enum EndPoint {
-    case recipes(categoryId: String)
+    case recipes
     case categories
     
     var url: URL? {
         switch self {
-        case .recipes(let id):
+        case .recipes:
             // return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/\(id)/recipes")
-            return URL(string: "http://localhost:3000/api/\(id)/recipes")
+            return URL(string: "http://localhost:3000/api/recipes")
         case .categories:
             // return URL(string: "https://nameless-reaches-31983.herokuapp.com/api/categories")
             return URL(string: "http://localhost:3000/api/categories")

@@ -19,8 +19,7 @@ struct NetworkImage: View {
     var body: some View {
         if model.image == nil {
             Spinner()
-                .frame(width: 100, height: 100)
-                .offset(y: 100)
+                .frame(width: 60, height: 60)
         }
         else {
             Image(uiImage: model.image!)
