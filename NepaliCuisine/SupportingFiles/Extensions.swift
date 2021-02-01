@@ -87,9 +87,10 @@ struct Title: ViewModifier {
 }
 
 struct Heading: ViewModifier {
+    var fontSize: CGFloat
     func body(content: Content) -> some View {
         content
-            .font(Font.custom("Montserrat-Bold", size: 20))
+            .font(Font.custom("Montserrat-Bold", size: fontSize))
     }
 }
 
@@ -106,8 +107,8 @@ extension Text {
         self.modifier(Title(fontSize: fontSize))
     }
     
-    func headline() -> some View {
-        self.modifier(Heading())
+    func headline(fontSize: CGFloat = 20) -> some View {
+        self.modifier(Heading(fontSize: fontSize))
     }
     
     func subheadline() -> some View {

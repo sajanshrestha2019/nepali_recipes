@@ -26,8 +26,7 @@ struct HomePageView: View {
                         .foregroundColor(RecipeApp.primaryColor)
                     CategoryScrollView(recipeModel: recipeModel)
                         .padding(.vertical)
-                    
-                    RecipeVerticalScrollView(recipes: recipeModel.recipes)
+                    RecipeVerticalScrollView(recipes: recipeModel.categoryRecipes)
                 }
                 .padding()
                 .navigationBarHidden(true)
@@ -91,8 +90,8 @@ struct CategoryView: View {
 struct RecipeVerticalScrollView: View {
         
     var recipes: [Recipe]
-    var popularRecipes: [Recipe] { [recipes.first!] }
-    var newRecipes: [Recipe] { [recipes.first!] }
+    var popularRecipes: [Recipe] { recipes.filter { $0.isPopular } }
+    var newRecipes: [Recipe] { [] }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -115,14 +114,18 @@ struct HorizontalScrollView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             VStack(alignment: .leading) {
                 Text(title)
-                    .titled(fontSize: 20)
+                    .titled(fontSize: 24)
                 HStack(spacing: spacing) {
                     ForEach(recipes) { recipe in
-                        VStack(alignment: .leading) {
-                            RecipeCardView(recipe: recipe)
-                                .frame(width: 150, height: 100)
-                            Text(recipe.name)
-                                .font(.subheadline)
+                        NavigationLink(destination: RecipeDetailView(for: recipe)) {
+                            VStack(alignment: .leading) {
+                                RecipeCardView(recipe: recipe)
+                                    .frame(width: 150, height: 100)
+                                Text(recipe.name)
+                                    .headline(fontSize: 14)
+                                    .foregroundColor(.gray)
+                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
+                            }
                         }
                     }
                 }
@@ -148,7 +151,7 @@ struct RecipeCardView: View {
                 NetworkImage(url: recipe.imageUrl)
                     .frame(width: minimum * 0.7, height: minimum * 0.9)
             }
-            .shadow(radius: shadowRadius)
+            .shadow(color: Color.gray, radius: shadowRadius, x: 3, y: 3)
         }
     }
     

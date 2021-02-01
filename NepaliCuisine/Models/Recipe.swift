@@ -20,7 +20,7 @@ struct Recipe: Codable, Identifiable {
     let serveSize: Int
     let level: String
     let type: [String]
-    var subType: String?
+    var isPopular: Bool
     
     var indgredientsDescription: String {
         ingredients.joined(separator: ", ")
@@ -55,7 +55,7 @@ extension Recipe {
     static var testRecipe: Recipe {
         Recipe(id: 1, name: "Momo", duration: 35, ingredients: ["1 Onion", "2 Tomatoes", "1 Wrapper"], instructions: [
             Instruction(id: 1, text: "Instruction 1", videoUrl: "", imageUrl: "")
-        ], imageUrl: "", color: "#db9bae", serveSize: 2, level: "Easy", type: [])
+        ], imageUrl: "", color: "#db9bae", serveSize: 2, level: "Easy", type: [], isPopular: true)
     }
 }
 

@@ -10,20 +10,29 @@ import Combine
 
 class RecipeModel: ObservableObject {
     
-    @Published var recipes = [Recipe]() {
+    private var allRecipes = [Recipe]() {
         didSet {
             if !fetchedRecipesSaved {
                 saveFetchedRecipes()
             }
             fetchedRecipesSaved = true
             self.recipeLoading = false
+            
+            setRecipesForCurrentCategory()
         }
     }
     
+    @Published var categoryRecipes = [Recipe]()
+    
+    private func setRecipesForCurrentCategory() {
+        guard let category = categories.first else { return }
+        
+        updateRecipes(for: category)
+    }
+        
     @Published var categories = [RecipeCategory]() {
         didSet {
-            selectedCategory = categories.first
-            fetchRecipes(for: selectedCategory)
+            fetchRecipes()
         }
     }
     
@@ -42,19 +51,18 @@ class RecipeModel: ObservableObject {
     }
     
     private func saveFetchedRecipes() {
-        RecipeFileManager.save(recipes)
+        RecipeFileManager.save(allRecipes)
     }
     
-    private func fetchRecipes(for category: RecipeCategory?) {
-        guard category != nil else { return }
-        recipesSubscriber = RecipeDownloader.getRecipes(category: category!)
+    private func fetchRecipes() {
+        recipesSubscriber = RecipeDownloader.getRecipes()
             .replaceError(with: [])
-            .assign(to: \.recipes, on: self)
+            .assign(to: \.allRecipes, on: self)
     }
     
     func updateRecipes(for category: RecipeCategory) {
         selectedCategory = category
-        recipes = RecipeFileManager.getRecipesFor(for: category)
+        categoryRecipes = RecipeFileManager.getRecipesFor(for: category)
     }
     
     
