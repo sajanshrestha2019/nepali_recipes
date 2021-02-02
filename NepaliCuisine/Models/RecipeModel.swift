@@ -5,44 +5,15 @@
 //  Created by Sajan Shrestha on 12/3/20.
 //
 
+/*
+ WHAT'S HAPPENING HERE?
+    When instance of RecipeModel is initialized, it will populate the categories (if network call is successful). Once the categories are set, all recipes are fetched and assigned to 'allRecipes' property. When it is set, it will first save those recipes in the file system and then set the categoryRecipes for current category selected.
+ */
+
 import SwiftUI
 import Combine
 
 class RecipeModel: ObservableObject {
-    
-    private var allRecipes = [Recipe]() {
-        didSet {
-            if !fetchedRecipesSaved {
-                saveFetchedRecipes()
-            }
-            fetchedRecipesSaved = true
-            self.recipeLoading = false
-            
-            setRecipesForCurrentCategory()
-        }
-    }
-    
-    @Published var categoryRecipes = [Recipe]()
-    
-    private func setRecipesForCurrentCategory() {
-        guard let category = categories.first else { return }
-        
-        updateRecipes(for: category)
-    }
-        
-    @Published var categories = [RecipeCategory]() {
-        didSet {
-            fetchRecipes()
-        }
-    }
-    
-    @Published var recipeLoading = true
-    
-    var selectedCategory: RecipeCategory?
-    
-    var recipesSubscriber: AnyCancellable?
-    var categoriesSubscriber: AnyCancellable?
-    
     
     init() {
         categoriesSubscriber = RecipeDownloader.getCategories()
@@ -50,8 +21,12 @@ class RecipeModel: ObservableObject {
             .assign(to: \.categories, on: self)
     }
     
-    private func saveFetchedRecipes() {
-        RecipeFileManager.save(allRecipes)
+    var categoriesSubscriber: AnyCancellable?
+    
+    @Published var categories = [RecipeCategory]() {
+        didSet {
+            fetchRecipes()
+        }
     }
     
     private func fetchRecipes() {
@@ -60,11 +35,29 @@ class RecipeModel: ObservableObject {
             .assign(to: \.allRecipes, on: self)
     }
     
-    func updateRecipes(for category: RecipeCategory) {
-        selectedCategory = category
-        categoryRecipes = RecipeFileManager.getRecipesFor(for: category)
+    var recipesSubscriber: AnyCancellable?
+    
+    private var allRecipes = [Recipe]() {
+        didSet {
+            saveFetchedRecipes()
+            self.recipeLoading = false
+            updateRecipes(for: categories.first) // to display recipes for first category
+        }
     }
     
+    private func saveFetchedRecipes() {
+        RecipeFileManager.save(allRecipes)
+    }
     
-    private var fetchedRecipesSaved = false
+    @Published var recipeLoading = true
+        
+    func updateRecipes(for category: RecipeCategory?) {
+        selectedCategory = category
+        guard let newCategory = category else { return }
+        categoryRecipes = RecipeFileManager.getRecipesFor(for: newCategory)
+    }
+    
+    var selectedCategory: RecipeCategory?
+    
+    @Published var categoryRecipes = [Recipe]()
 }

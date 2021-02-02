@@ -91,14 +91,12 @@ struct RecipeVerticalScrollView: View {
         
     var recipes: [Recipe]
     var popularRecipes: [Recipe] { recipes.filter { $0.isPopular } }
-    var newRecipes: [Recipe] { [] }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
                 HorizontalScrollView(title: "All", recipes: recipes)
                 HorizontalScrollView(title: "Popular", recipes: popularRecipes)
-                HorizontalScrollView(title: "New Recipes", recipes: newRecipes)
             }
         }
     }
