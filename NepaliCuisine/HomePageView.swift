@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HomePageView: View {
     
-    @ObservedObject var recipeModel: RecipeModel
+    @ObservedObject var homePageModel: HomePageModel
         
     var body: some View {
-        if recipeModel.recipeLoading {
+        
+        if homePageModel.loadingData {
             Spinner()
                 .frame(width: 100, height: 100)
         }
@@ -24,11 +25,10 @@ struct HomePageView: View {
                     Text(questionText)
                         .font(Font.custom("Raleway-Regular", size: questionTextSize))
                         .foregroundColor(RecipeApp.primaryColor)
-                    CategoryScrollView(recipeModel: recipeModel)
-                        .padding(.vertical)
-                    RecipeVerticalScrollView(recipes: recipeModel.categoryRecipes)
+                    MainSection(homePageModel: homePageModel)
+                        .padding(.top)
                 }
-                .padding()
+                .padding(.leading)
                 .navigationBarHidden(true)
                 
                 Text("Select a category")
@@ -45,58 +45,16 @@ struct HomePageView: View {
 
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            HomePageView(recipeModel: RecipeModel())
-        }
-    }
-}
 
-
-struct CategoryScrollView: View {
-    
-    @ObservedObject var recipeModel: RecipeModel
-    
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(recipeModel.categories) { category in
-                    CategoryView(category: category, isSelected: recipeModel.selectedCategory == category) {
-                        recipeModel.updateRecipes(for: category)
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct CategoryView: View {
-    var category: RecipeCategory
-    var isSelected: Bool
-    var action: () -> ()
-    var body: some View {
-        Button(action: action, label: {
-            Text(category.name)
-                .padding(EdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10))
-                .background(isSelected ? RecipeApp.focusedColor : RecipeApp.secondaryColor)
-                .foregroundColor(isSelected ? Color.white : Color.black)
-                .cornerRadius(10)
-        })
-    }
-}
-
-
-struct RecipeVerticalScrollView: View {
-        
-    var recipes: [Recipe]
-    var popularRecipes: [Recipe] { recipes.filter { $0.isPopular } }
+struct MainSection: View {
+    var homePageModel: HomePageModel
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
-                HorizontalScrollView(title: "All", recipes: recipes)
-                HorizontalScrollView(title: "Popular", recipes: popularRecipes)
+                RecipesScrollView(title: "Recipes", recipes: homePageModel.allRecipes)
+                RecipesScrollView(title: "Popular", recipes: homePageModel.popularRecipes)
+                CategoryScrollView(categories: homePageModel.categories)
             }
         }
     }
@@ -105,14 +63,15 @@ struct RecipeVerticalScrollView: View {
     private let verticalSpacing: CGFloat = 25
 }
 
-struct HorizontalScrollView: View {
+struct RecipesScrollView: View {
     var title: String
     var recipes: [Recipe]
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            VStack(alignment: .leading) {
-                Text(title)
-                    .titled(fontSize: 24)
+        
+        VStack(alignment: .leading) {
+            Text(title)
+                .titled(fontSize: 24)
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: spacing) {
                     ForEach(recipes) { recipe in
                         NavigationLink(destination: RecipeDetailView(for: recipe)) {
@@ -135,7 +94,6 @@ struct HorizontalScrollView: View {
 }
 
 struct RecipeCardView: View {
-    
     var recipe: Recipe
     
     var body: some View {
@@ -158,10 +116,33 @@ struct RecipeCardView: View {
     private let shadowRadius: CGFloat = 4
 }
 
+struct CategoryScrollView: View {
+    var categories: [RecipeCategory]
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Recipes by Category")
+                .titled(fontSize: 24)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(categories) { category in
+                        let recipeListModel = RecipeListModel(for: .recipesByCategory(id: category.id))
+                        NavigationLink(
+                            destination: RecipeListView(recipeListModel: recipeListModel),
+                            label: {
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(RecipeApp.primaryColor)
 
-struct RecipeCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeCardView(recipe: Recipe.testRecipe)
-            .frame(width: 300, height: 300)
+                                    Text(category.name)
+                                        .headline(fontSize: 12)
+                                        .foregroundColor(.white)
+                                        .layoutPriority(-1)
+                                }
+                            })
+                    }
+                }
+            }
+        }
     }
 }

@@ -26,7 +26,6 @@ struct Recipe: Codable, Identifiable {
         ingredients.joined(separator: ", ")
     }
     
-    var imageData: Data?
 }
 
 struct Instruction: Codable {

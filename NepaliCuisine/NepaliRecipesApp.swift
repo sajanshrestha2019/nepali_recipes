@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct NepaliRecipesApp: App {
+    let homePageModel = HomePageModel()
     var body: some Scene {
         WindowGroup {
-            HomePageView(recipeModel: RecipeModel())
+            HomePageView(homePageModel: homePageModel)
         }
     }
 }

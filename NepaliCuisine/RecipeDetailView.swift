@@ -28,12 +28,9 @@ struct RecipeDetailView: View {
                 
                 ZStack {
                     Color(#colorLiteral(red: 0.297303915, green: 0.2494146526, blue: 0.2370918989, alpha: 1))
-                    Image(uiImage: UIImage(data: recipe.imageData ?? Data())!)
-                        .resizable()
+                    NetworkImage(url: recipe.imageUrl)
                         .frame(width: 240, height: 320)
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                        .shadow(radius: imageShadow)
+
                 }
                 
                 VStack(alignment: .leading, spacing: verticalSpacing) {
