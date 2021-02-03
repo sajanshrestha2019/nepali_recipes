@@ -9,14 +9,31 @@ import SwiftUI
 
 struct RecipeListView: View {
     var recipeListModel: RecipeListModel
+    private let columns = [ GridItem(.adaptive(minimum: 160)) ]
+    
     var body: some View {
-        List(recipeListModel.recipes) { recipe in
-            NavigationLink(destination: RecipeDetailView(for: recipe)) {
-                Text(recipe.name)
-            }
+        
+        ScrollView(.vertical, showsIndicators: true) {
+            LazyVGrid(columns: columns) {
+                ForEach(recipeListModel.recipes) { recipe in
+                    NavigationLink(destination: RecipeDetailView(for: recipe)) {
+                        VStack {
+                            RecipeCardView(recipe: recipe)
+                                .frame(height: 200)
+                            Text(recipe.name)
+                                .headline(fontSize: 14)
+                                .foregroundColor(.gray)
+                                .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
+                        }
+                    }
+                }
+            }.padding()
         }
+        .navigationTitle(Text(recipeListModel.categoryName))
     }
 }
+
+
 
 struct RecipeListView_Previews: PreviewProvider {
     static var previews: some View {

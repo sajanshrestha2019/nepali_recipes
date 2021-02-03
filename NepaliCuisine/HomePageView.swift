@@ -52,9 +52,10 @@ struct MainSection: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
-                RecipesScrollView(title: "Recipes", recipes: homePageModel.allRecipes)
-                RecipesScrollView(title: "Popular", recipes: homePageModel.popularRecipes)
+                RecipesScrollView(title: "Recipes", recipes: homePageModel.allRecipes, recipeType: .all)
+                RecipesScrollView(title: "Popular", recipes: homePageModel.popularRecipes, recipeType: .popular)
                 CategoryScrollView(categories: homePageModel.categories)
+                
             }
         }
     }
@@ -66,11 +67,22 @@ struct MainSection: View {
 struct RecipesScrollView: View {
     var title: String
     var recipes: [Recipe]
+    var recipeType: RecipeType
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text(title)
-                .titled(fontSize: 24)
+            HStack {
+                Text(title)
+                    .titled(fontSize: 24)
+                Spacer()
+                
+                NavigationLink(destination: RecipeListView(recipeListModel: RecipeListModel(for: recipeType))) {
+                    Text("View All")
+                        .foregroundColor(RecipeApp.primaryColor)
+                        .headline(fontSize: 14)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
+                }
+            }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: spacing) {
                     ForEach(recipes) { recipe in
@@ -125,7 +137,7 @@ struct CategoryScrollView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(categories) { category in
-                        let recipeListModel = RecipeListModel(for: .recipesByCategory(id: category.id))
+                        let recipeListModel = RecipeListModel(for: .recipesByCategory(id: category.id, name: category.name))
                         NavigationLink(
                             destination: RecipeListView(recipeListModel: recipeListModel),
                             label: {

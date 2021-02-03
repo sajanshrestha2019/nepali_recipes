@@ -10,7 +10,7 @@ import Foundation
 struct HomePageDataDownloader {
     
     static func getHomePageData(completion: @escaping (HomePageData) -> Void) {
-        let url = URL(string: "http://localhost:3000/api/home")!
+        let url = URL(string: NepaliRecipeApi.homePageDataUrl)!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {

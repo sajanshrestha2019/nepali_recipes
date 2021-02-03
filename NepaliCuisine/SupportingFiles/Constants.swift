@@ -14,3 +14,12 @@ struct RecipeApp {
     static let focusedColor: Color = Color(#colorLiteral(red: 0.2237304151, green: 0.4777753353, blue: 0.3543518186, alpha: 1))
 
 }
+
+struct NepaliRecipeApi {
+    static let homePageDataUrl = "http://localhost:3000/api/home"
+    static let allRecipesUrl = "http://localhost:3000/api/recipes"
+    static let popularRecipesUrl = "http://localhost:3000/api/popular_recipes"
+    static func url(for categoryId: String) -> String {
+        "http://localhost:3000/api/\(categoryId)/recipes"
+    }
+}
