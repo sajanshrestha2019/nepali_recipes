@@ -19,30 +19,52 @@ struct HomePageView: View {
         }
         else {
             NavigationView {
-                VStack(alignment: .leading, spacing: verticalSpacing) {
-                    Text(greetingText)
-                        .titled()
-                    Text(questionText)
-                        .font(Font.custom("Raleway-Regular", size: questionTextSize))
-                        .foregroundColor(RecipeApp.primaryColor)
-                    MainSection(homePageModel: homePageModel)
-                        .padding(.top)
+                ZStack {
+                    BackgroundColorView(color: #colorLiteral(red: 0.9639671445, green: 0.9685655236, blue: 0.9858184457, alpha: 1))
+                    VStack(alignment: .leading, spacing: verticalSpacing) {
+                        HeaderSection()
+                        MainSection(homePageModel: homePageModel)
+                    }
+                    .padding(.leading)
+                    .navigationBarHidden(true)
                 }
-                .padding(.leading)
-                .navigationBarHidden(true)
                 
                 Text("Select a category")
                     .titled()
+            
             }
         }
     }
     
-    // MARK: - Constants 0
+    // MARK: - Constants
+    private let verticalSpacing: CGFloat = 24
+}
+
+
+struct BackgroundColorView: View {
+    var color: UIColor
+    var body: some View {
+        Color(color).edgesIgnoringSafeArea(.all)
+    }
+}
+
+
+struct HeaderSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: verticalSpacing) {
+            Text(greetingText)
+                .titled()
+            Text(questionText)
+                .font(Font.custom("Raleway-Regular", size: questionTextSize))
+                .foregroundColor(RecipeApp.primaryColor)
+        }
+    }
+    
+    // MARK:- Constants
     private let greetingText = "Hello, Foodie!"
     private let questionText = "What are you cooking today?"
-    private let verticalSpacing: CGFloat = 10
     private let questionTextSize: CGFloat = 22
-
+    private let verticalSpacing: CGFloat = 10
 }
 
 
@@ -52,16 +74,15 @@ struct MainSection: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: verticalSpacing) {
+                CategoryScrollView(categories: homePageModel.categories)
                 RecipesScrollView(title: "Recipes", recipes: homePageModel.allRecipes, recipeType: .all)
                 RecipesScrollView(title: "Popular", recipes: homePageModel.popularRecipes, recipeType: .popular)
-                CategoryScrollView(categories: homePageModel.categories)
-                
             }
         }
     }
     
     // MARK: - Constants
-    private let verticalSpacing: CGFloat = 25
+    private let verticalSpacing: CGFloat = 30
 }
 
 struct RecipesScrollView: View {
@@ -83,19 +104,15 @@ struct RecipesScrollView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
                 }
             }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: spacing) {
-                    ForEach(recipes) { recipe in
-                        NavigationLink(destination: RecipeDetailView(for: recipe)) {
-                            VStack(alignment: .leading) {
-                                RecipeCardView(recipe: recipe)
-                                    .frame(width: 150, height: 100)
-                                Text(recipe.name)
-                                    .headline(fontSize: 14)
-                                    .foregroundColor(.gray)
-                                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
-                            }
-                        }
+            HorizontalScrollView(items: recipes) { recipe in
+                NavigationLink(destination: RecipeDetailView(for: recipe)) {
+                    VStack(alignment: .leading) {
+                        RecipeCardView(recipe: recipe)
+                            .frame(width: 150, height: 100)
+                        Text(recipe.name)
+                            .headline(fontSize: 14)
+                            .foregroundColor(.gray)
+                            .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 0))
                     }
                 }
             }
@@ -131,30 +148,16 @@ struct RecipeCardView: View {
 struct CategoryScrollView: View {
     var categories: [RecipeCategory]
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Recipes by Category")
-                .titled(fontSize: 24)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(categories) { category in
-                        let recipeListModel = RecipeListModel(for: .recipesByCategory(id: category.id, name: category.name))
-                        NavigationLink(
-                            destination: RecipeListView(recipeListModel: recipeListModel),
-                            label: {
-                                ZStack {
-                                    Circle()
-                                        .frame(width: 80, height: 80)
-                                        .foregroundColor(RecipeApp.primaryColor)
-
-                                    Text(category.name)
-                                        .headline(fontSize: 12)
-                                        .foregroundColor(.white)
-                                        .layoutPriority(-1)
-                                }
-                            })
-                    }
-                }
-            }
+        HorizontalScrollView(items: categories) { category in
+            VStack {
+                NetworkImage(url: category.icon)
+                    .frame(width: 50, height: 50)
+                Text(category.name)
+                    .foregroundColor(.black)
+                    .headline(fontSize: 12)
+                    .layoutPriority(-1)
+                
+            }.frame(width: 70)
         }
     }
 }

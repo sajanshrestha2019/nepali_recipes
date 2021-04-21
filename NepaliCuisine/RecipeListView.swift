@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeListView: View {
     var recipeListModel: RecipeListModel
-    private let columns = [ GridItem(.adaptive(minimum: 160)) ]
+    private let columns = [ GridItem(.adaptive(minimum: 100)) ]
     
     var body: some View {
         
@@ -19,7 +19,7 @@ struct RecipeListView: View {
                     NavigationLink(destination: RecipeDetailView(for: recipe)) {
                         VStack {
                             RecipeCardView(recipe: recipe)
-                                .frame(height: 200)
+                                .frame(height: 100)
                             Text(recipe.name)
                                 .headline(fontSize: 14)
                                 .foregroundColor(.gray)

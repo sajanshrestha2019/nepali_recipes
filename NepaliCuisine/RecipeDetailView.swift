@@ -16,7 +16,7 @@ struct RecipeDetailView: View {
     @State private var mediaUrl = ""
     @State private var mediaType = MediaType.none
     @State private var presentedSheet: PresentedSheet? = nil
-    
+        
     init(for recipe: Recipe) {
         self.recipe = recipe
     }
@@ -27,10 +27,10 @@ struct RecipeDetailView: View {
             VStack(spacing: verticalSpacing) {
                 
                 ZStack {
-                    Color(#colorLiteral(red: 0.297303915, green: 0.2494146526, blue: 0.2370918989, alpha: 1))
+                    Color(#colorLiteral(red: 0.297303915, green: 0.2494146526, blue: 0.2370918989, alpha: 1)).opacity(0.9)                        
                     NetworkImage(url: recipe.imageUrl)
                         .frame(width: 240, height: 320)
-
+                        
                 }
                 
                 VStack(alignment: .leading, spacing: verticalSpacing) {
